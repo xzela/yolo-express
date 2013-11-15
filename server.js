@@ -5,7 +5,10 @@ var express = require('express');
 console.log("Starting Server... ");
 var app = express();
 
+// includes the handlebars
 var hbs = require('hbs');
+
+var blogEngine = require('./blog');
 
 // set the engine to look for .html files in addition to .hbs
 app.set('view engine', 'html');
@@ -14,11 +17,11 @@ app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('index', {title: 'Yolo! Express'});
 });
 
 app.get('/about', function(req, res) {
-  res.render('about');
+  res.render('index', {title: 'Aboutn Yolo! Express'});
 });
 
 app.get('/article', function(req, res) {
