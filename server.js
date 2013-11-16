@@ -18,7 +18,7 @@ app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 
 //app.use(express.bodyParser());
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res) {
