@@ -22,16 +22,17 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res) {
-  res.render('index', {title: 'Yolo! Express', entries: blogEngine.getBlogEntries});
+	console.log(blogEngine.getBlogEntries);
+  // res.render('index', {brand: 'Yolo! Express', title: 'Yolo! Express', entries: blogEngine.getBlogEntries});
 });
 
 app.get('/about', function(req, res) {
-  res.render('about', {title: 'Aboutn Yolo! Express'});
+  res.render('about', {brand: 'Yolo! Express', title: 'Aboutn Yolo! Express'});
 });
 
 app.get('/article/:id', function(req, res) {
-	var entry = blogEngine.getBlogEntry(req.params.id);
-  res.render('article', {title:entry.title, blog:entry});
+	// var entry = blogEngine.getBlogEntry(req.params.id);
+  // res.render('article', {brand: 'Yolo! Express', title:entry.title, blog:entry});
 });
 
 console.log("Listening on port: " + PORT);
