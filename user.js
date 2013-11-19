@@ -1,9 +1,16 @@
 
+var data = {};
+
 var users = [
-	{name: 'JT', email: 'jt@aol.com'},
-	{name: 'Tobi', email: 'tobi@aol.com'},
+	{id:1, name: 'JT', email: 'jt@aol.com'},
+	{id:2, name: 'Tobi', email: 'tobi@aol.com'},
 ];
 
+exports.init = function(mixin) {
+	data = mixin;
+	return exports;
+};
+
 exports.list = function(request, response) {
-	response.render('index', {brand: 'Yolo! Express', title: 'Users', users: users})
+	response.render('users', {brand: data.brand, title: 'Users', users: users})
 };

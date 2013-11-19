@@ -10,8 +10,8 @@ var hbs = require('hbs');
 
 // load the blog data/engine (at this point they're the same)
 var blogEngine = require('./blog');
-
-var user = require('./user');
+var data = {brand: 'Yolo! Express'};
+var user = require('./user').init(data);
 
 
 // set the engine to look for .html files in addition to .hbs
@@ -27,11 +27,11 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
 	console.log(blogEngine.getBlogEntries);
-  res.render('index', {brand: 'Yolo! Express', title: 'Yolo! Express', entries: blogEngine.getBlogEntries});
+  res.render('index', {brand: data.brand, title: 'Yolo! Express', entries: user.getBlogEntries});
 });
 
 app.get('/about', function(req, res) {
-  res.render('about', {brand: 'Yolo! Express', title: 'Aboutn Yolo! Express'});
+  res.render('about', {brand: data.brand, title: 'Aboutn Yolo! Express'});
 });
 
 app.get('/article/:id', function(req, res) {

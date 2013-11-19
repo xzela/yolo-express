@@ -27,6 +27,7 @@ var options = {
 };
 
 exports.getBlogEntries = function() {
+	var list
 	var d = http.get(options, function(resp) {
 		// console.log(resp);
 		console.log("Got response: " + resp.statusCode);
