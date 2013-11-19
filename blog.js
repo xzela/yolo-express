@@ -38,6 +38,7 @@ exports.getBlogEntries = function() {
 	}).on("error", function(e){
 		console.log("Got error: " + e.message);
 	});
-	console.log(d)
+	// console.log(d)
+	return d;
 }
 

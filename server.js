@@ -11,6 +11,9 @@ var hbs = require('hbs');
 // load the blog data/engine (at this point they're the same)
 var blogEngine = require('./blog');
 
+var user = require('./user');
+
+
 // set the engine to look for .html files in addition to .hbs
 app.set('view engine', 'html');
 
@@ -21,9 +24,10 @@ app.engine('html', hbs.__express);
 app.use(express.static(__dirname + '/public'));
 
 
+
 app.get('/', function(req, res) {
 	console.log(blogEngine.getBlogEntries);
-  // res.render('index', {brand: 'Yolo! Express', title: 'Yolo! Express', entries: blogEngine.getBlogEntries});
+  res.render('index', {brand: 'Yolo! Express', title: 'Yolo! Express', entries: blogEngine.getBlogEntries});
 });
 
 app.get('/about', function(req, res) {
@@ -34,6 +38,8 @@ app.get('/article/:id', function(req, res) {
 	// var entry = blogEngine.getBlogEntry(req.params.id);
   // res.render('article', {brand: 'Yolo! Express', title:entry.title, blog:entry});
 });
+
+app.all('/users', user.list);
 
 console.log("Listening on port: " + PORT);
 app.listen(PORT);
