@@ -2,6 +2,7 @@
 //
 var PORT = 3000;
 var express = require('express');
+
 console.log("Starting Server... ");
 var app = express();
 
@@ -19,8 +20,7 @@ app.set('view engine', 'html');
 
 // load the handlebars
 app.engine('html', hbs.__express);
-
-//app.use(express.bodyParser());
+// tell express where to look for static stuff?
 app.use(express.static(__dirname + '/public'));
 
 
@@ -39,7 +39,8 @@ app.get('/article/:id', function(req, res) {
   // res.render('article', {brand: 'Yolo! Express', title:entry.title, blog:entry});
 });
 
-app.all('/users', user.list);
+app.get('/users', user.list);
+app.post('/users', user.add);
 
 console.log("Listening on port: " + PORT);
 app.listen(PORT);

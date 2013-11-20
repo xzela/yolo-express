@@ -1,7 +1,12 @@
 <h1>Users</h1>
 {{#each users}}
-   <p>
-      Name: <a href="/article/{{id}}">{{name}}</a><br/>
-      Email: {{email}}
-   </p>
+	<p>
+		Name: <a href="/article/{{id}}">{{name}}</a><br/>
+		Email: {{email}}
+	</p>
 {{/each}}
+<form method="POST">
+	<input type="text" name="name" />
+	<input type="text" name="email" />
+	<input type="submit" value="Add User" />
+</form>
